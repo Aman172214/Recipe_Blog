@@ -4,6 +4,7 @@ import Image from "next/image";
 import classes from "./mealItem.module.css";
 
 const MealItem = ({ title, slug, image, summary, creator }) => {
+
   return (
     <article className={classes.meal}>
       <header>

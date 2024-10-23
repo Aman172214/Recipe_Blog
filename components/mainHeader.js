@@ -3,7 +3,7 @@ import React from "react";
 import logoImg from "@/assets/logo.png";
 import classes from "./mainHeader.module.css";
 import Image from "next/image";
-import MainHeaderBackground from "./mainHeaderBackground";
+import MainHeaderBackground from "./mainHeaderBackground.js";
 import NavLink from "./navLink";
 
 const MainHeader = () => {
