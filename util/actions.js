@@ -2,12 +2,13 @@
 
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 const isInvalidText = (text) => {
   return !text || text.trim() === "";
 };
 
-export const shareMeal = async (prevState,formData) => {
+export const shareMeal = async (prevState, formData) => {
   const meal = {
     title: formData.get("title"),
     summary: formData.get("summary"),
@@ -27,10 +28,11 @@ export const shareMeal = async (prevState,formData) => {
     meal.image.size === 0
   ) {
     return {
-      message: 'Invalid input or missing data.'
-    }
+      message: "Invalid input or missing data.",
+    };
   }
 
   await saveMeal(meal);
+  revalidatePath("/meals");
   redirect("/meals");
 };
